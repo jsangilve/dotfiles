@@ -5,13 +5,14 @@
 colorscheme desert
 set number
 
-" Pathogen to install plugins
+" Python-mode Plugin:  Pathogen to install plugins
 filetype off
 
 call pathogen#infect()
 call pathogen#helptags()
 
-filetype plugin indent on
+let g:pymode_folding = 0
+filetype plugin indent off
 syntax on
 
 " setting tab number to the tab's name
