@@ -2,12 +2,14 @@
 :set shiftwidth=2
 :set expandtab
 
-colorscheme desert
+"colorscheme desert
+colorscheme molokai
 set number
 
 " Python-mode Plugin:  Pathogen to install plugins
 filetype off
 
+" python pep syntax
 call pathogen#infect()
 call pathogen#helptags()
 
