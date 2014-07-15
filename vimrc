@@ -3,7 +3,7 @@
 :set expandtab
 
 "colorscheme desert
-colorscheme molokai
+colorscheme desert
 set number
 
 " Python-mode Plugin:  Pathogen to install plugins
@@ -13,9 +13,12 @@ filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
-let g:pymode_folding = 0
-filetype plugin indent off
+filetype plugin indent on
 syntax on
+let g:pymode_folding = 0
+let g:pymode_indent = 0
+let g:pymode_syntax_all = 0
+let g:pymode_syntax_indent_errors = 0
 
 " setting tab number to the tab's name
 fu! MyTabLabel(n)
@@ -53,3 +56,6 @@ return s
 endfu
 set tabline=%!MyTabLine()
 hi TabLineSel term=bold cterm=bold ctermfg=Yellow
+
+" detecting markdown files with .md extension
+au BufRead,BufNewFile *.md set filetype=markdown
