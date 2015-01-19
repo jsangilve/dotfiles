@@ -59,3 +59,7 @@ hi TabLineSel term=bold cterm=bold ctermfg=Yellow
 
 " detecting markdown files with .md extension
 au BufRead,BufNewFile *.md set filetype=markdown
+
+" detecting .hbs templates as HTML
+au BufRead,BufNewFile */hbs set filetype=html
+
