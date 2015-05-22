@@ -61,5 +61,7 @@ hi TabLineSel term=bold cterm=bold ctermfg=Yellow
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " detecting .hbs templates as HTML
-au BufRead,BufNewFile */hbs set filetype=html
+au BufRead,BufNewFile *.hbs set filetype=html
 
+" detecting
+au BufRead,BufNewFile *.py set colorcolumn=80
