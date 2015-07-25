@@ -7,11 +7,14 @@ colorscheme desert
 set number
 
 " Python-mode Plugin:  Pathogen to install plugins
-filetype off
+" filetype off
 
 " python pep syntax
-call pathogen#infect()
-call pathogen#helptags()
+" call pathogen#infect()
+" call pathogen#helptags()
+
+" vim Pathogen
+execute pathogen#infect()
 
 filetype plugin indent on
 syntax on
@@ -57,11 +60,12 @@ endfu
 set tabline=%!MyTabLine()
 hi TabLineSel term=bold cterm=bold ctermfg=Yellow
 
+" calling flake8 everytime you write a Python file
+autocmd BufWritePost *.py call Flake8()
+
 " detecting markdown files with .md extension
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " detecting .hbs templates as HTML
-au BufRead,BufNewFile *.hbs set filetype=html
+au BufRead,BufNewFile */hbs set filetype=html
 
-" detecting
-au BufRead,BufNewFile *.py set colorcolumn=80
