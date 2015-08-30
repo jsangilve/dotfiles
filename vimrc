@@ -18,10 +18,6 @@ execute pathogen#infect()
 
 filetype plugin indent on
 syntax on
-let g:pymode_folding = 0
-let g:pymode_indent = 0
-let g:pymode_syntax_all = 0
-let g:pymode_syntax_indent_errors = 0
 
 " setting tab number to the tab's name
 fu! MyTabLabel(n)
@@ -67,5 +63,5 @@ autocmd BufWritePost *.py call Flake8()
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " detecting .hbs templates as HTML
-au BufRead,BufNewFile */hbs set filetype=html
+au BufRead,BufNewFile *.hbs set filetype=html
 
