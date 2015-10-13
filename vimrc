@@ -65,3 +65,5 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " detecting .hbs templates as HTML
 au BufRead,BufNewFile *.hbs set filetype=html
 
+set cursorline " highlight current line
+set wildmenu " visual autocomplete for command menu
