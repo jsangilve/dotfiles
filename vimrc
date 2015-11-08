@@ -67,3 +67,9 @@ au BufRead,BufNewFile *.hbs set filetype=html
 
 set cursorline " highlight current line
 set wildmenu " visual autocomplete for command menu
+set hlsearch " highlight search matches
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+" open nerdtree
+map <C-n> :NERDTreeToggle<CR>
