@@ -70,6 +70,28 @@ set wildmenu " visual autocomplete for command menu
 set hlsearch " highlight search matches
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+" toggle tagbar
+nnoremap <F3> :TagbarToggle<CR>
 
 " open nerdtree
 map <C-n> :NERDTreeToggle<CR>
+
+" Hilight Pmenu (popup menu)
+hi Pmenu ctermbg=Black ctermfg=Yellow
+hi PmenuSel ctermbg=Yellow ctermfg=Black
+
+" CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Deleting trailing spaces
+function! StripTrailingWhitespace()
+  normal mZ
+  let l:chars = col("$")
+  %s/\s\+$//e
+  if (line("'Z") != line(".")) || (l:chars != col("$"))
+    echo "Trailing whitespace stripped\n"
+  endif
+  normal `Z
+endfunction
+
+au BufWritePre *.py :call StripTrailingWhitespace()
