@@ -88,7 +88,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/python_envs
 source /usr/local/bin/virtualenvwrapper.sh
 
-export NVM_DIR="/home/jsangil/.nvm"
+export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
@@ -98,3 +98,25 @@ export PATH="$PATH:$HOME/spotify-command-line/"
 
 # Adding NGINX
 export PATH="$PATH:/opt/nginx/sbin/"
+
+# Adding Android SDK
+export ANDROID_HOME="$HOME/android-sdk-linux/"
+# Genymotion (Android Emulator)
+export PATH="$PATH:$HOME/genymotion/"
+
+# weather command
+alias weather='curl wttr.in/barcelona'
+# myip command
+alias myip='curl ipecho.net/plain; echo'
+
+# Connecting to rdesktop
+alias kingslayer='rdesktop -u Administrator -g 1850x950 -p - gmtfxtrading.com'
+alias asgard='rdesktop -u Administrator -g 1850x950 -p \)owbiA\)3X3 52.20.192.187'
+
+# pyenv (Python Version Management)
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Starting node environment
+nvm use stable

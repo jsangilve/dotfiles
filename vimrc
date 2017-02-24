@@ -1,6 +1,7 @@
 :set tabstop=2
 :set shiftwidth=2
 :set expandtab
+set t_Co=256
 
 "colorscheme desert
 colorscheme desert
@@ -42,7 +43,7 @@ for i in range(tabpagenr('$'))
     " set the tab page number (for mouse clicks)
     "let s .= '%' . (i + 1) . 'T'
     " display tabnumber (for use with <count>gt, etc)
-    let s .= ' '. (i+1) . ' ' 
+    let s .= ' '. (i+1) . ' '
 
     " the label is made by MyTabLabel()
     let s .= '%{MyTabLabel(' . (i + 1) . ')} '
@@ -95,3 +96,24 @@ function! StripTrailingWhitespace()
 endfunction
 
 au BufWritePre *.py :call StripTrailingWhitespace()
+au BufWritePre *.js :call StripTrailingWhitespace()
+au BufWritePre *.ex :call StripTrailingWhitespace()
+
+" Statusline vim-airlinne
+set laststatus=2 " This is required for some reason
+let g:airline_theme='badwolffixed'
+let g:airline_powerline_fonts=1
+
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_python_checkers = []
