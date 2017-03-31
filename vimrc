@@ -3,8 +3,8 @@
 :set expandtab
 set t_Co=256
 
-"colorscheme desert
-colorscheme desert
+colorscheme desierto
+"colorscheme badwolf
 set number
 
 " Python-mode Plugin:  Pathogen to install plugins
