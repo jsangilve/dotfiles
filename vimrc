@@ -11,7 +11,7 @@ set number
 " filetype off
 
 " python pep syntax
-" call pathogen#infect()
+"call pathogen#infect()
 " call pathogen#helptags()
 
 " vim Pathogen
@@ -83,6 +83,10 @@ hi PmenuSel ctermbg=Yellow ctermfg=Black
 
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_cmd = 'CtrlP .'
+" ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 
 " Deleting trailing spaces
 function! StripTrailingWhitespace()
@@ -96,7 +100,7 @@ function! StripTrailingWhitespace()
 endfunction
 
 au BufWritePre *.py :call StripTrailingWhitespace()
-au BufWritePre *.js :call StripTrailingWhitespace()
+" au BufWritePre *.js :call StripTrailingWhitespace()
 au BufWritePre *.ex :call StripTrailingWhitespace()
 
 " Statusline vim-airlinne
@@ -115,5 +119,30 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_python_checkers = []
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_python_checkers = []
+
+" Prettier-eslint Javascript formatter
+" let g:prettier_eslint_path = '/home/jsangil/.nvm/versions/node/v6.9.2/bin/prettier-eslint'
+autocmd FileType javascript set formatprg=prettier-eslint\ --stdin\ --no-semi\ --single-quote
+" autocmd FileType javascript execute "set formatprg=".g:prettier_eslint_path."\\ --stdin"
+" autocmd BufWritePre *.js :normal gggqG
+
+" move selected lines up one line
+xnoremap k :m-2<CR>gv=gv
+
+" move selected lines down one line
+xnoremap j :m'>+<CR>gv=gv
+
+" changing vim cursor
+au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+au InsertEnter,InsertChange *
+  \ if v:insertmode == 'i' | 
+  \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+  \ elseif v:insertmode == 'r' |
+  \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+  \ endif
+au VimLeave * silent execute '!echo -ne "\e[5 q"' | redraw!
+
+" Format elixir files using mix format
+autocmd FileType elixir set formatprg=mix\ format\ -

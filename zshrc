@@ -106,8 +106,15 @@ export PATH="$PATH:$HOME/genymotion/"
 
 # weather command
 alias weather='curl wttr.in/barcelona'
+# create a function, because alias cannot get arguments:
+# use it as follows: weather_in Hamburg
+function fun_weather_in() { curl "wttr.in/$1" ;}
+alias weather_in=fun_weather_in
+
 # myip command
 alias myip='curl ipecho.net/plain; echo'
+# git status alias
+alias gits='git status'
 
 # Connecting to rdesktop
 alias kingslayer='rdesktop -u Administrator -g 1850x950 -p - gmtfxtrading.com'
@@ -118,5 +125,19 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# asdf (Version manager elixir)
+# For Ubuntu or other linux distros
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
+
 # Starting node environment
 nvm use stable
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/jsangil/localbitcoins/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jsangil/localbitcoins/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/jsangil/localbitcoins/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jsangil/localbitcoins/google-cloud-sdk/completion.zsh.inc'; fi
+
+# The next line updates PATH for the original App Engine SDK (Google Cloud asks you to install both things)
+export PATH=$PATH:~/localbitcoins/google_appengine/
